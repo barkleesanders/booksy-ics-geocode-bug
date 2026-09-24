@@ -1,0 +1,51 @@
+booksy-ics-geocode-bug -  build summary
+Date: 2026-09-24 ~1:17-1:25 PM PT
+Owner target: github.com/barkleesanders (public)
+
+Root: repository root
+
+Evidence copied from (not invented):
+  (local investigation archive) FINDINGS.md
+  (local investigation archive) gis/ (way/124903636, iHeart @ 340 Townsend,
+    Booksy JSON-LD 37.7797680906372,-122.39454645283753)
+
+Paths:
+  README.md
+  REPORT_PACK.md
+  LICENSE                 (MIT)
+  SUMMARY.txt             (this file)
+  docs/01-root-cause.md
+  docs/02-ics-spec-fix.md
+  docs/03-apple-maps.md
+  docs/04-google-maps.md
+  docs/05-openstreetmap.md
+  docs/06-booksy-report.md
+  docs/07-repro-matrix.md
+  code/validate_ics.py
+  code/generate_good_ics.py
+  code/geocode_compare.py
+  code/testdata/bad_invite.ics
+  code/testdata/good_invite.ics
+
+Validator runs (python3 on this box; shebang is python3):
+
+  $ python3 code/validate_ics.py code/testdata/bad_invite.ics
+FAIL  code/testdata/bad_invite.ics
+  ERROR: LOCATION is street-only and GEO / X-APPLE-STRUCTURED-LOCATION geo pin is missing (Calendar will re-geocode the bare address)
+  WARN:  LOCATION has no shop/business name on the first line (prefer 'Shop Name\nUnit address' over bare street)
+  WARN:  no GEO property (and no geo: in X-APPLE-STRUCTURED-LOCATION)
+  exit_code=1
+
+  $ python3 code/validate_ics.py code/testdata/good_invite.ics
+PASS  code/testdata/good_invite.ics
+  exit_code=0
+
+  $ python3 code/validate_ics.py code/testdata/*.ics
+FAIL  code/testdata/bad_invite.ics
+  ERROR: LOCATION is street-only and GEO / X-APPLE-STRUCTURED-LOCATION geo pin is missing (Calendar will re-geocode the bare address)
+  WARN:  LOCATION has no shop/business name on the first line (prefer 'Shop Name\nUnit address' over bare street)
+  WARN:  no GEO property (and no geo: in X-APPLE-STRUCTURED-LOCATION)
+PASS  code/testdata/good_invite.ics
+  exit_code=1   (non-zero because bad fixture fails -  expected)
+
+Honesty: does not claim Apple/Google listings already fixed; OSM alone does not fix Apple Calendar.
