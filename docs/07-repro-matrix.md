@@ -5,7 +5,7 @@ All coordinates below are from the Sep 24, 2026 PT investigation (Booksy JSON-LD
 ## Reference pins
 
 | Label | lat, lon | Notes |
-|-------|----------|-------|
+|-------|----------|--------|
 | Booksy shop (JSON-LD) | `37.7797680906372, -122.39454645283753` | Your Barber Juan / door |
 | OSM building 411 Brannan | `37.7796851, -122.3944474` | way/`124903636`, ~13 m from Booksy |
 | iHeartMedia OSM | `37.7766503, -122.3964158` | 340 Townsend, ~384 m SW |

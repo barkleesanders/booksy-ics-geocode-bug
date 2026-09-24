@@ -9,12 +9,12 @@ Add the shop to OSM to fix open-data search and to help apps that use Nominatim.
 - Booksy ICS `GEO` + titled `LOCATION`
 - Apple Business Connect + Google Business Profile for proprietary Maps
 
-**Do not** claim an OSM changeset fixed Calendar invites.
+Do **not** claim an OSM changeset fixed Calendar invites.
 
 ## Current OSM state (evidence, Sep 24, 2026 PT)
 
 | Item | State |
-|------|-------|
+|------|--------|
 | Building 411 Brannan | way/`124903636`, centroid ≈ `37.7796851, -122.3944474` |
 | Shop POI “The Closer Shave” / “Your Barber Juan” | **Missing** (Nominatim 0 hits) |
 | iHeartMedia | Office at **340 Townsend** ≈ `37.7766503, -122.3964158` (~384 m SW) |
